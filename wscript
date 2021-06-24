@@ -113,12 +113,12 @@ def build_ppu_cpp(bld):
     """
     bld(target=f"{EXPERIMENT_NAME}-ppu_includes",
         export_includes=["src/ppu"],
-        env=bld.all_envs["nux_vx"])
+        env=bld.all_envs["nux_vx_v2"])
 
     bld.program(name=f"{EXPERIMENT_NAME}-ppu_helloworld",
                 features="cxx",
                 target="hello_world.bin",
                 source=[f"src/ppu/{EXPERIMENT_NAME}/hello_world.cpp"],
-                use=["nux_vx", "nux_runtime_vx",
+                use=["nux_vx_v2", "nux_runtime_vx_v2",
                      f"{EXPERIMENT_NAME}-ppu_includes"],
-                env=bld.all_envs["nux_vx"])
+                env=bld.all_envs["nux_vx_v2"])
