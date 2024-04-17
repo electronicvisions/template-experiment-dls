@@ -40,7 +40,7 @@ def configure(conf):
 
 
 def build(bld):
-    bld.env.DLSvx_HARDWARE_AVAILABLE = "cube" == os.environ.get("SLURM_JOB_PARTITION")
+    bld.env.DLSvx_HARDWARE_AVAILABLE = "SLURM_HWDB_YAML" in os.environ
 
     build_host_cpp(bld)
     build_host_python(bld)
