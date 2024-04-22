@@ -40,7 +40,7 @@ def configure(conf):
 
 
 def build(bld):
-    bld.env.DLSvx_HARDWARE_AVAILABLE = "SLURM_HWDB_YAML" in os.environ
+    bld.env.BBS_HARDWARE_AVAILABLE = "SLURM_HWDB_YAML" in os.environ
 
     build_host_cpp(bld)
     build_host_python(bld)
@@ -95,7 +95,7 @@ def build_host_python(bld):
         install_path="${PREFIX}/bin/tests/hw",
         pylint_config=join(get_toplevel_path(), "code-format", "pylintrc"),
         pycodestyle_config=join(get_toplevel_path(), "code-format", "pycodestyle"),
-        skip_run=not bld.env.DLSvx_HARDWARE_AVAILABLE)
+        skip_run=not bld.env.BBS_HARDWARE_AVAILABLE)
 
     bld(name=f"{EXPERIMENT_NAME}-python_swtests",
         tests=bld.path.ant_glob("tests/sw/py/**/*.py"),
